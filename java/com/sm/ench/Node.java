@@ -16,6 +16,13 @@ public class Node {
 	
 	//Type variables
 	public static boolean isTrigger = false;
+	public static boolean isOnBlock = false;
+	public static boolean isOnSword = false;
+	public static boolean isOnBow = false;
+	public static boolean isOnAmulet = false;
+	public static boolean isOnMulti = false;
+	public static boolean isOnArmor = false;
+	public static boolean isOnTool = false;
 	
 	
 	public Node(int type,int parent,Ench ench){
