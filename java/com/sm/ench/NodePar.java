@@ -8,6 +8,7 @@ import net.minecraft.world.World;
 public class NodePar {
 	public World world;
 	public Object origin;
+	public int ortype;
 	public ArrayList<EntityLivingBase> entitiesaffected = new ArrayList();
 	public double x;
 	public double y;
@@ -17,6 +18,15 @@ public class NodePar {
 	
 	
 	public NodePar(World wor, Object or, EntityLivingBase... ents){
+		
+		String ort = or.getClass().getSuperclass().getName();
+			
+		
+		
+		
+		
+		
+		
 		
 	}
 }
