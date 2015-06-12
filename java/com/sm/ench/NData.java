@@ -42,6 +42,10 @@ public class NData {
 		return GROUP;
 	}
 	
+	public int getToolType(){
+		return TTYPE;
+	}
+	
 	public String getName(){
 		return NAME;
 	}

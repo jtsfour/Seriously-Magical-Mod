@@ -1,5 +1,8 @@
 package com.sm.ench;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.world.World;
 
@@ -13,6 +16,7 @@ public class Node {
 	public static int PARENT=0;
 	public boolean hasParent=false;
 	private int lc=0;
+	private NData ndata = null;
 	
 	//Type variables
 	public static boolean isTrigger = false;
@@ -31,6 +35,7 @@ public class Node {
 		ID=ENCH.regNode(this);
 		hasID=true;
 		ENCH.setTreeP(parent,this);
+		ndata=ENCH.getNData(type);
 	}
 	
 	protected boolean addLink(int id){
@@ -76,7 +81,25 @@ public class Node {
 		hasParent=true;
 	}
 	
-	public void perfAction(World world,EntityLivingBase entity,double x,double y,double z){
+	public void perfAction(NodePar np){
+			try {
+				Method method = Class.forName(Index.class.getName()).getDeclaredMethod(ndata.getMName(),NodePar.class,NData.class,Node.class);
+				method.invoke(ENCH.getIndex(),np,ndata,this);
+			} catch (NoSuchMethodException e) {
+				e.printStackTrace();
+			} catch (SecurityException e) {
+				e.printStackTrace();
+			} catch (ClassNotFoundException e) {
+				e.printStackTrace();
+			} catch (IllegalAccessException e) {
+				e.printStackTrace();
+			} catch (IllegalArgumentException e) {
+				e.printStackTrace();
+			} catch (InvocationTargetException e) {
+				e.printStackTrace();
+			}
+			
+			
 		
 	}
 	

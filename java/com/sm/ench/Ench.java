@@ -6,9 +6,10 @@ public class Ench {
 	
 	private ArrayList<Node> nodes = new ArrayList();
 	private static int nextID = 0;
+	private Index INDEX = null;
 	
-	public Ench(){
-		
+	public Ench(Index index){
+		INDEX = index;
 	}
 	
 	public int regNode(Node node){
@@ -48,6 +49,14 @@ public class Ench {
 		}
 		
 		return node;
+	}
+	
+	public NData getNData(int type){
+		return INDEX.getNDataI(type);
+	}
+	
+	public Index getIndex(){
+		return INDEX;
 	}
 	
 	

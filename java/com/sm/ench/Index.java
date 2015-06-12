@@ -24,10 +24,15 @@ public class Index {
 		NData nd = null;
         boolean loop=true;
 		for(int i=0;loop;i++){
-			if(ndata.get(i).getID()==i){
+			try{
+				if(ndata.get(i).getID()==id){
 				nd=ndata.get(i);
 				loop=false;
 			}
+			}catch(IndexOutOfBoundsException e){
+				System.out.println("CANNOT FIND NDATA");
+			}
+			
 		}
 		return nd;
 	}
@@ -42,6 +47,22 @@ public class Index {
 			}
 		}
 		return nd;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	// NODE METHODS
+	
+	public static void test(NodePar np,NData nd,Node node){
+		System.out.println("I WORKED!");
 	}
 	
 	

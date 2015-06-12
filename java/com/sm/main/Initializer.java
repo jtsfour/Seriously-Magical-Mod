@@ -1,4 +1,6 @@
-package com.sm.ench;
+package com.sm.main;
+
+import com.sm.ench.Index;
 
 public class Initializer {
 
@@ -6,8 +8,9 @@ public class Initializer {
 	
 	public static Index INDEX;
 	
-	public Initializer(){
-		INDEX=new Index();
+	public Initializer(Index ind){
+		System.out.println("Initializing!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		INDEX=ind;
 		
 		
 		//Nodes
