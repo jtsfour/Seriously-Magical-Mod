@@ -4,7 +4,10 @@ package com.sm.main;
 import com.sm.ench.Ench;
 import com.sm.ench.Index;
 import com.sm.ench.Node;
+import com.sm.ench.EnchEventHandler;
 
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.SidedProxy;
@@ -26,6 +29,8 @@ public class SM
     public static SM instance;
     
     
+    EnchEventHandler enhandler = new EnchEventHandler();
+    
     
     @EventHandler
     public void preInit(FMLPreInitializationEvent event)
@@ -35,7 +40,8 @@ public class SM
     	Ench ench = new Ench(index);
     	Node node = new Node(1001,0,ench);
     	node.perfAction(null);
-    	
+    	MinecraftForge.EVENT_BUS.register(enhandler);
+    	FMLCommonHandler.instance().bus().register(enhandler);
     	
     	
         

@@ -3,9 +3,6 @@ package com.sm.ench;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.world.World;
-
 public class Node {
 	
 	public static int ID;
@@ -38,7 +35,7 @@ public class Node {
 		ndata=ENCH.getNData(type);
 	}
 	
-	protected boolean addLink(int id){
+	public boolean addLink(int id){
 		boolean b=true;
 		try{
 			links[lc]=id;
