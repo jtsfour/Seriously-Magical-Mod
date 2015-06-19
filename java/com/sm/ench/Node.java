@@ -9,11 +9,10 @@ public class Node {
 	public static int TYPE;
 	private static Ench ENCH;
 	public boolean hasID=false;
-	public static int[] links = new int[100];
+	public static int[] links = new int[10];
 	public static int PARENT=0;
 	public boolean hasParent=false;
-	private int lc=0;
-	private NData ndata = null;
+	public NData ndata = null;
 	
 	//Type variables
 	public static boolean isTrigger = false;
@@ -26,62 +25,53 @@ public class Node {
 	public static boolean isOnTool = false;
 	
 	
-	public Node(int type,int parent,Ench ench){
+	public Node(int type,Ench ench){
 		TYPE=type;
 		ENCH=ench;
 		ID=ENCH.regNode(this);
 		hasID=true;
-		ENCH.setTreeP(parent,this);
+		//ENCH.setTreeP(parent,this);
 		ndata=ENCH.getNData(type);
 	}
 	
-	public boolean addLink(int id){
+	public boolean addLink(int loc,int id){
 		boolean b=true;
 		try{
-			links[lc]=id;
-			lc++;	
+			links[loc]=id;
 		}catch(Exception e){
 			b=false;
 		}
 		
 		return b;
 	}
-	public boolean removelink(int id){
-		boolean loop=true;
-		boolean r=false;
-		boolean f=false;
-		for(int i=0;loop;i++){
-			try{
-				if(f){
-					links[i-1]=links[i];
-					links[i]=0;
-						}
-			}catch(Exception e){
-				r=true;
-				loop=false;
-				}
-			try{
-				if(links[i]==id){
-					f=true;
-					links[i]=0;
-				}	
-			}catch(Exception e){
-				r=false;
-				loop=false;
-			}
-			}
-			return r;
+	public boolean removelink(int loc){
+		boolean b=false;
+		try{
+			links[loc]=0;
+			b=true;
+		}catch(Exception e){
+			b=false;
+		}
+			return b;
 		}
 	
 	public void setParent(int id){
 		PARENT=id;
-		hasParent=true;
 	}
 	
-	public void perfAction(NodePar np){
-			try {
+	public Boolean perfAction(NodePar np){
+		ENCH.PROCESS=ID;
+			Object bool = null;
+		try {
 				Method method = Class.forName(Index.class.getName()).getDeclaredMethod(ndata.getMName(),NodePar.class,NData.class,Node.class);
-				method.invoke(ENCH.getIndex(),np,ndata,this);
+				if(ndata.isTrigger()){
+					bool = method.invoke(ENCH.getIndex(),np,ndata,this);
+					if((Boolean)bool){
+						callLinked();
+					}
+				}else{
+					bool = method.invoke(ENCH.getIndex(),np,ndata,this);
+				}
 			} catch (NoSuchMethodException e) {
 				e.printStackTrace();
 			} catch (SecurityException e) {
@@ -95,14 +85,28 @@ public class Node {
 			} catch (InvocationTargetException e) {
 				e.printStackTrace();
 			}
-			
-			
+			if(ndata.canLink()){
+				if((Boolean)bool){
+					callLinked();
+				}
+			}else{
+				return (Boolean)bool;
+			}
+		return null;
+	}
+	
+	public void callLinked(){
 		
+	}
+	
+	public boolean getBooleanValue(NodePar np){
+		
+		return false;
 	}
 	
 	
 	
-	
+		
 	
 	
 	

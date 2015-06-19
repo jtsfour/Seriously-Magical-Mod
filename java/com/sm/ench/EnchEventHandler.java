@@ -18,10 +18,27 @@ public class EnchEventHandler {
 		
 	}
 	
+	public int findEnch(int et){
+		try{
+			for(int i=0;i>-1;i++){
+				Ench ench = enchlist.get(i);
+				if(ench.getNode(ench.PROCESS).ndata.isTrigger()){
+					if(ench.getNode(ench.PROCESS).ndata.isAEvent(et)){
+						return i;
+					}
+				}
+			}
+		}catch(ArrayIndexOutOfBoundsException e){
+			
+		}
+		
+		return -1;
+	}
 	
 	
+	//EVENTS
 	@SubscribeEvent()
-	public void playerHit(AttackEntityEvent event){
+	public void playerHit(AttackEntityEvent event){//1
 	
 		
 		
@@ -29,7 +46,7 @@ public class EnchEventHandler {
 	}
 	
 	@SubscribeEvent()
-	public void blockbreak(BlockEvent.BreakEvent event){
+	public void blockbreak(BlockEvent.BreakEvent event){//2
 	
 		
 		

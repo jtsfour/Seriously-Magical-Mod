@@ -7,6 +7,7 @@ public class Ench {
 	private ArrayList<Node> nodes = new ArrayList();
 	private static int nextID = 0;
 	private Index INDEX = null;
+	public int PROCESS = 0;
 	
 	public Ench(Index index){
 		INDEX = index;
@@ -23,7 +24,7 @@ public class Ench {
 		}
 			
 	}
-	//sets link as node's parent
+	/*//sets link as node's parent/*
 	public boolean setTreeP(int parent,Node node){
 		Node node0=getNode(parent);
 		if(node0!=null){
@@ -33,7 +34,7 @@ public class Ench {
 			return false;
 		}
 		
-	}
+	}*/
 	
 	public Node getNode(int id){
 		Node node=null;

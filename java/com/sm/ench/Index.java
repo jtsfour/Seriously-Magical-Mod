@@ -1,5 +1,6 @@
 package com.sm.ench;
 
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 
 public class Index {
@@ -14,10 +15,22 @@ public class Index {
 	}
 	
 	
-	public void register(int id,String name,String methodName,int nodeGroup,boolean isTrigger,boolean canBlock,boolean canSword,boolean canBow,boolean canAmulet,boolean canMulti,boolean canArmor,boolean canTool,int ttype){
-		ndata.add(new NData(id,name,methodName,nodeGroup,isTrigger,canBlock,canSword,canBow,canAmulet,canMulti,canArmor,canTool,ttype));
+	public NData register(int id,String name,String methodName,int nodeGroup){
+		try {
+			Method method = Class.forName(Index.class.getName()).getDeclaredMethod(methodName,NodePar.class,NData.class,Node.class);
+		}catch(NoSuchMethodException e){
+			System.out.println("[ERROR]INVALID METHOD TAG AND/OR PARAMS FOR NODE : "+name+" : "+id);
+			e.printStackTrace();
+		} catch (SecurityException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		NData nd = new NData(id,name,methodName,nodeGroup);
+		ndata.add(nd);
 		regids[nc]=id;
 		nc++;
+		return nd;
 	}
 	
 	public NData getNDataI(int id){
@@ -61,8 +74,9 @@ public class Index {
 	
 	// NODE METHODS
 	
-	public static void test(NodePar np,NData nd,Node node){
+	public static boolean test(NodePar np,NData nd,Node node){
 		System.out.println("I WORKED!");
+		return true;
 	}
 	
 	

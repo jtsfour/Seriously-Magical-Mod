@@ -1,6 +1,7 @@
 package com.sm.main;
 
 import com.sm.ench.Index;
+import com.sm.ench.NData;
 
 public class Initializer {
 
@@ -9,20 +10,20 @@ public class Initializer {
 	public static Index INDEX;
 	
 	public Initializer(Index ind){
-		System.out.println("Initializing!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		System.out.println("Registering Ench Nodes");
 		INDEX=ind;
 		
 		
 		//Nodes
-		regNode(1001, "Test", "test", 1, true, true, true, true, true, true, true, true, 0);
+		regNode(1001, "Test", "test", 1).setCanBeLinked(true);
 		
-		
-		
+		System.out.println("Ench Nodes Successfully Registered");
 	}
 	
 	
-	private void regNode(int id,String name,String methodName,int nodeGroup,boolean isTrigger,boolean canBlock,boolean canSword,boolean canBow,boolean canAmulet,boolean canMulti,boolean canArmor,boolean canTool,int ttype){
-		INDEX.register(id,name,methodName,nodeGroup,isTrigger,canBlock,canSword,canBow,canAmulet,canMulti,canArmor,canTool,ttype);
+	private NData regNode(int id,String name,String methodName,int nodeGroup){
+		NData nd = INDEX.register(id,name,methodName,nodeGroup);
+		return nd;
 	}
 	
 }

@@ -36,10 +36,8 @@ public class SM
     public void preInit(FMLPreInitializationEvent event)
     {	
     	Index index = new Index();
-    	Initializer initer = new Initializer(index);
-    	Ench ench = new Ench(index);
-    	Node node = new Node(1001,0,ench);
-    	node.perfAction(null);
+    	@SuppressWarnings("unused")
+		Initializer initer = new Initializer(index);
     	MinecraftForge.EVENT_BUS.register(enhandler);
     	FMLCommonHandler.instance().bus().register(enhandler);
     	
