@@ -2,6 +2,8 @@ package com.sm.ench;
 
 import java.util.ArrayList;
 
+import com.sm.items.EItem;
+
 import scala.actors.threadpool.Arrays;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityLivingBase;
@@ -13,7 +15,7 @@ public class NodePar {
 	public World WORLD;
 	public EntityPlayer PLAYER;
 	public Block BLOCK;
-	public ItemStack ITEM;
+	public EItem ITEM;
 	public ArrayList<EntityLivingBase> entityaff = new ArrayList();
 	public ArrayList<Block> blockaff = new ArrayList();
 	public double x;
@@ -24,7 +26,7 @@ public class NodePar {
 	
 	
 	
-	public NodePar(World world,int etype, EntityPlayer player, ItemStack item,EntityLivingBase... ents){
+	public NodePar(World world,int etype, EntityPlayer player, EItem item,EntityLivingBase... ents){
 		WORLD = world;
 		eventtype = etype;
 		PLAYER=player;
@@ -54,7 +56,7 @@ public class NodePar {
 		z=(block.getBlockBoundsMaxZ()+block.getBlockBoundsMinZ())/2;
 	}
 	
-	public NodePar(World world,int etype, EntityPlayer player, ItemStack item, Block... blocks){
+	public NodePar(World world,int etype, EntityPlayer player, EItem item, Block... blocks){
 		WORLD = world;
 		eventtype = etype;
 		PLAYER=player;

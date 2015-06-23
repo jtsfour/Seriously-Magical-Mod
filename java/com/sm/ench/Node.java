@@ -17,7 +17,7 @@ public class Node {
 	
 	//Type variables
 	
-	
+	//Constructor for brand new Nodes
 	public Node(int type,Ench ench){
 		TYPE=type;
 		ENCH=ench;
@@ -25,6 +25,17 @@ public class Node {
 		hasID=true;
 		//ENCH.setTreeP(parent,this);
 		ndata=ENCH.getNData(type);
+	}
+	//Constructor for reloading nodes from nbt
+	public Node(int id,int type,int parent,Ench ench,int[] links0){
+		ID=id;
+		hasID=true;
+		TYPE=type;
+		PARENT=parent;
+		if(parent>0)hasParent=true;
+		ENCH=ench;
+		links=links0;
+		ndata=ENCH.getNData(TYPE);
 	}
 	
 	public boolean addLink(int loc,int id){

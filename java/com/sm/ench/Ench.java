@@ -1,16 +1,48 @@
 package com.sm.ench;
 
 import java.util.ArrayList;
+import com.sm.blocks.EBlock;
+import com.sm.items.EItem;
+import com.sm.main.Instances;
+import net.minecraft.block.Block;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 
 public class Ench {
 	
 	private ArrayList<Node> nodes = new ArrayList();
-	private static int nextID = 0;
+	private EItem ITEM;
+	private EBlock BLOCK;
+	private int type=0;
+	private int nextID = 0;
 	private Index INDEX = null;
 	public int PROCESS = 0;
+	//NEEDS UPDATING!!!!!!!!!!!!!!!!
+	public Ench(Object obj){
+		INDEX = Instances.getIndex();
+		if(obj.getClass()==EItem.class){
+			ITEM=(EItem)obj;
+			type=1;
+		}else if(obj.getClass()==EBlock.class){
+			BLOCK=(EBlock)obj;
+			type=2;
+		}else{
+			System.out.println("[ERROR] TRIED TO CREATE AN ENCH WITH UNDEFINED OBJECT TYPE: "+obj.getClass().getName());
+		}
+	}
 	
-	public Ench(Index index){
-		INDEX = index;
+	public Ench(Object obj,int nextId,int process){
+		nextID=nextId;
+		PROCESS=process;
+		if(obj.getClass()==EItem.class){
+			ITEM=(EItem)obj;
+			type=1;
+		}else if(obj.getClass()==EBlock.class){
+			BLOCK=(EBlock)obj;
+			type=2;
+		}else{
+			System.out.println("[ERROR] TRIED TO CREATE AN ENCH WITH UNDEFINED OBJECT TYPE: "+obj.getClass().getName());
+		}
 	}
 	
 	public int regNode(Node node){
@@ -24,6 +56,10 @@ public class Ench {
 		}
 			
 	}
+	
+	public void addNode(Node node){
+		nodes.add(node);
+	}
 	/*//sets link as node's parent/*
 	public boolean setTreeP(int parent,Node node){
 		Node node0=getNode(parent);
@@ -35,6 +71,8 @@ public class Ench {
 		}
 		
 	}*/
+	
+	
 	
 	public Node getNode(int id)throws ArrayIndexOutOfBoundsException{
 		Node node=null;
@@ -58,6 +96,14 @@ public class Ench {
 	
 	public Index getIndex(){
 		return INDEX;
+	}
+	
+	public EItem getItem(){
+		if(type==1){
+			return ITEM;
+		}else{
+			return null;
+		}
 	}
 	
 	public void runProcess(NodePar np){

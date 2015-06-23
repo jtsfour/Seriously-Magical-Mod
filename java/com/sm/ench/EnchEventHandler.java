@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import com.sm.main.Instances;
 
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -44,7 +45,7 @@ public class EnchEventHandler {
 		int en = findEnch(1);
 		if(en>-1){
 			if(!event.entityPlayer.worldObj.isRemote){
-				//enchlist.get(en).runProcess(new NodePar(event.entityPlayer.worldObj,1,));
+				enchlist.get(en).runProcess(new NodePar(event.entityPlayer.worldObj,1,event.entityPlayer,enchlist.get(en).getItem(),(EntityLivingBase)event.target));
 			}
 		}
 		
