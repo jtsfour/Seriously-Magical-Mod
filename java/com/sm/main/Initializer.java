@@ -16,6 +16,7 @@ public class Initializer {
 		
 		//Nodes
 		regNode(1001, "Test", "test", 1).setCanBeLinked(true);
+		regNode(1011,"Trigger1","trigger1",2).setTriggers(1).setCanBeLinked(true).setCanBeOnSword(true).setLinkNames("link1","link2");
 		
 		System.out.println("Ench Nodes Successfully Registered");
 	}

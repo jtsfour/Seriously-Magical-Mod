@@ -13,16 +13,9 @@ public class Node {
 	public static int PARENT=0;
 	public boolean hasParent=false;
 	public NData ndata = null;
+	public NodePar datatopass = null;
 	
 	//Type variables
-	public static boolean isTrigger = false;
-	public static boolean isOnBlock = false;
-	public static boolean isOnSword = false;
-	public static boolean isOnBow = false;
-	public static boolean isOnAmulet = false;
-	public static boolean isOnMulti = false;
-	public static boolean isOnArmor = false;
-	public static boolean isOnTool = false;
 	
 	
 	public Node(int type,Ench ench){
@@ -59,8 +52,10 @@ public class Node {
 		PARENT=id;
 	}
 	
+	
 	public Boolean perfAction(NodePar np){
 		ENCH.PROCESS=ID;
+		datatopass=np;
 			Object bool = null;
 		try {
 				Method method = Class.forName(Index.class.getName()).getDeclaredMethod(ndata.getMName(),NodePar.class,NData.class,Node.class);
@@ -96,12 +91,12 @@ public class Node {
 	}
 	
 	public void callLinked(){
-		
-	}
-	
-	public boolean getBooleanValue(NodePar np){
-		
-		return false;
+			for(int i=0;i<10;i++){
+			try{
+				ENCH.getNode(i).perfAction(datatopass);
+			}catch(Exception e){
+			}
+		}
 	}
 	
 	

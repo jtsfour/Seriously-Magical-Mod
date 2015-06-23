@@ -19,14 +19,14 @@ public class NodePar {
 	public double x;
 	public double y;
 	public double z;
-	int eventtype = 0;
+	public int eventtype = 0;
 	
 	
 	
 	
-	public NodePar(World world, EntityPlayer player, ItemStack item,EntityLivingBase... ents){
+	public NodePar(World world,int etype, EntityPlayer player, ItemStack item,EntityLivingBase... ents){
 		WORLD = world;
-		eventtype = 1;
+		eventtype = etype;
 		PLAYER=player;
 		entityaff=(ArrayList<EntityLivingBase>)Arrays.asList(ents);
 		ITEM=item;
@@ -35,9 +35,9 @@ public class NodePar {
 		z=player.posZ;
 	}
 	
-	public NodePar(World world, Block block, EntityLivingBase... ents){
+	public NodePar(World world,int etype, Block block, EntityLivingBase... ents){
 		WORLD = world;
-		eventtype = 2;
+		eventtype = etype;
 		entityaff=(ArrayList<EntityLivingBase>)Arrays.asList(ents);
 		BLOCK=block;
 		x=(block.getBlockBoundsMaxX()+block.getBlockBoundsMinX())/2;
@@ -45,18 +45,18 @@ public class NodePar {
 		z=(block.getBlockBoundsMaxZ()+block.getBlockBoundsMinZ())/2;
 	}
 	
-	public NodePar(World world, Block block){
+	public NodePar(World world,int etype, Block block){
 		WORLD = world;
-		eventtype = 3;
+		eventtype = etype;
 		BLOCK=block;
 		x=(block.getBlockBoundsMaxX()+block.getBlockBoundsMinX())/2;
 		y=(block.getBlockBoundsMaxY()+block.getBlockBoundsMinY())/2;
 		z=(block.getBlockBoundsMaxZ()+block.getBlockBoundsMinZ())/2;
 	}
 	
-	public NodePar(World world, EntityPlayer player, ItemStack item, Block... blocks){
+	public NodePar(World world,int etype, EntityPlayer player, ItemStack item, Block... blocks){
 		WORLD = world;
-		eventtype = 4;
+		eventtype = etype;
 		PLAYER=player;
 		blockaff=(ArrayList<Block>)Arrays.asList(blocks);
 		ITEM=item;

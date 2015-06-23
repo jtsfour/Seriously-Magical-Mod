@@ -3,6 +3,8 @@ package com.sm.ench;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 
+import com.sm.main.Instances;
+
 public class Index {
 	
 	private ArrayList<NData> ndata = new ArrayList();
@@ -11,7 +13,7 @@ public class Index {
 	
 	
 	public Index(){
-		
+		Instances.setIndex(this);
 	}
 	
 	
@@ -77,6 +79,15 @@ public class Index {
 	public static boolean test(NodePar np,NData nd,Node node){
 		System.out.println("I WORKED!");
 		return true;
+	}
+	
+	public static boolean trigger1(NodePar np,NData nd,Node node){
+		if(np.eventtype==1){
+			node.datatopass=np;
+			return true;
+		}else{
+			return false;
+		}
 	}
 	
 	

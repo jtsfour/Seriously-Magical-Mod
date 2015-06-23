@@ -31,12 +31,13 @@ public class SM
     
     EnchEventHandler enhandler = new EnchEventHandler();
     
-    
+    @SuppressWarnings("unused")
     @EventHandler
     public void preInit(FMLPreInitializationEvent event)
     {	
+    	Instances inst = new Instances();
+    	Instances.setSM(this);
     	Index index = new Index();
-    	@SuppressWarnings("unused")
 		Initializer initer = new Initializer(index);
     	MinecraftForge.EVENT_BUS.register(enhandler);
     	FMLCommonHandler.instance().bus().register(enhandler);

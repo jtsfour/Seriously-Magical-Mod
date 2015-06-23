@@ -2,6 +2,8 @@ package com.sm.ench;
 
 import java.util.ArrayList;
 
+import com.sm.main.Instances;
+
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -12,7 +14,7 @@ public class EnchEventHandler {
 	
 	
 	public EnchEventHandler(){
-		
+		Instances.setEnchEH(this);
 		
 		
 		
@@ -39,7 +41,12 @@ public class EnchEventHandler {
 	//EVENTS
 	@SubscribeEvent()
 	public void playerHit(AttackEntityEvent event){//1
-	
+		int en = findEnch(1);
+		if(en>-1){
+			if(!event.entityPlayer.worldObj.isRemote){
+				//enchlist.get(en).runProcess(new NodePar(event.entityPlayer.worldObj,1,));
+			}
+		}
 		
 		
 		

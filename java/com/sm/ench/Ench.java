@@ -36,7 +36,7 @@ public class Ench {
 		
 	}*/
 	
-	public Node getNode(int id){
+	public Node getNode(int id)throws ArrayIndexOutOfBoundsException{
 		Node node=null;
 		if(id!=0){
 			boolean loop=true;
@@ -60,6 +60,8 @@ public class Ench {
 		return INDEX;
 	}
 	
-	
+	public void runProcess(NodePar np){
+		getNode(PROCESS).perfAction(np);
+	}
 	
 }
