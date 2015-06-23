@@ -5,13 +5,16 @@ import java.util.ArrayList;
 import com.sm.main.Instances;
 
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.gameevent.TickEvent;
 
 public class EnchEventHandler {
 
 	ArrayList<Ench> enchlist = new ArrayList<Ench>();
+	
 	
 	
 	public EnchEventHandler(){
@@ -59,6 +62,21 @@ public class EnchEventHandler {
 		
 		
 		
+	}
+	
+	@SubscribeEvent()
+	public void playerTick(TickEvent.PlayerTickEvent event){
+		try{
+			while(){
+				
+			}
+		}catch(ArrayIndexOutOfBoundsException e){
+			
+		}
+	}
+	
+	private boolean needsEItem(ItemStack item){
+		return false;
 	}
 	
 	

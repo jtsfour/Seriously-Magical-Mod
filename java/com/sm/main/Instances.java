@@ -2,12 +2,14 @@ package com.sm.main;
 
 import com.sm.ench.EnchEventHandler;
 import com.sm.ench.Index;
+import com.sm.items.EItemHandler;
 
 public class Instances {
 	private static Instances instance;
 	private static SM sminst;
 	private static EnchEventHandler ehinst;
 	private static Index ininst;
+	private static EItemHandler eihinst;
 	
 	
 	public Instances(){
@@ -25,6 +27,10 @@ public class Instances {
 	
 	public static void setIndex(Index in){
 		Instances.ininst=in;
+	}
+	
+	public static void setEIHandler(EItemHandler eih){
+		eihinst=eih;
 	}
 	
 	
@@ -55,5 +61,9 @@ public class Instances {
 		}catch(Exception e){
 			return null;
 		}
+	}
+	
+	public static EItemHandler getEIHandler(){
+		return eihinst;
 	}
 }

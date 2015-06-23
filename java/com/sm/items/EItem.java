@@ -15,15 +15,19 @@ public class EItem {
 	private Ench Ench;
 	private ItemStack Item;
 	
-	public EItem(ItemStack item){
+	public EItem(ItemStack item,boolean load){
 		EHandler=Instances.getEnchEH();
 		Item=item;
-		Ench=loadEnch(Item.getTagCompound());
+		if(load)Ench=loadEnch(Item.getTagCompound());
 	}
 	
 	public EItem(ItemStack item,Ench ench){
 		EHandler=Instances.getEnchEH();
 		Item=item;
+		Ench=ench;
+	}
+	
+	public void setEnch(Ench ench){
 		Ench=ench;
 	}
 	

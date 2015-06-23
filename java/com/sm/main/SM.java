@@ -1,10 +1,9 @@
 package com.sm.main;
 
 
-import com.sm.ench.Ench;
 import com.sm.ench.Index;
-import com.sm.ench.Node;
 import com.sm.ench.EnchEventHandler;
+import com.sm.items.EItemHandler;
 
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.FMLCommonHandler;
@@ -39,11 +38,9 @@ public class SM
     	Instances.setSM(this);
     	Index index = new Index();
 		Initializer initer = new Initializer(index);
+		EItemHandler eih = new EItemHandler();
     	MinecraftForge.EVENT_BUS.register(enhandler);
     	FMLCommonHandler.instance().bus().register(enhandler);
-    	
-    	
-        
     }
    
     
