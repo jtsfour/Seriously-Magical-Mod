@@ -2,6 +2,7 @@ package com.sm.ench;
 
 import java.util.ArrayList;
 
+import com.sm.items.EItemHandler;
 import com.sm.main.Instances;
 
 import net.minecraft.entity.EntityLivingBase;
@@ -14,7 +15,7 @@ import net.minecraftforge.fml.common.gameevent.TickEvent;
 public class EnchEventHandler {
 
 	ArrayList<Ench> enchlist = new ArrayList<Ench>();
-	
+	private EItemHandler EIH;
 	
 	
 	public EnchEventHandler(){
@@ -66,17 +67,11 @@ public class EnchEventHandler {
 	
 	@SubscribeEvent()
 	public void playerTick(TickEvent.PlayerTickEvent event){
-		try{
-			while(){
-				
-			}
-		}catch(ArrayIndexOutOfBoundsException e){
-			
-		}
+		//EIH.updatePlayer(event.player);
 	}
 	
-	private boolean needsEItem(ItemStack item){
-		return false;
+	public void setEIH(EItemHandler eih){
+		EIH=eih;
 	}
 	
 	

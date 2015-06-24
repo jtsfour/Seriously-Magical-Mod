@@ -15,6 +15,11 @@ public class EItemHandler {
 	public EItemHandler(){
 		Instances.setEIHandler(this);
 		ENCHEH=Instances.getEnchEH();
+		ENCHEH.setEIH(this);
+	}
+	
+	public void updatePlayer(EntityPlayer p){
+		
 	}
 	
 	
