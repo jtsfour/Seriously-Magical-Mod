@@ -9,6 +9,9 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import net.minecraftforge.event.world.BlockEvent;
+import net.minecraftforge.event.world.ChunkEvent;
+import net.minecraftforge.event.world.ChunkEvent.Unload;
+import net.minecraftforge.event.world.WorldEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 
@@ -70,15 +73,19 @@ public class EnchEventHandler {
 		//EIH.updatePlayer(event.player);
 	}
 	
+	@SubscribeEvent()
+	public void chunkLoad(ChunkEvent.Load event){
+		
+	}
+	
+	@SubscribeEvent()
+	public void chunkUnload(Unload event){
+		
+	}
+	
 	public void setEIH(EItemHandler eih){
 		EIH=eih;
 	}
-	
-	
-	
-	
-	
-	
 	
 	
 }

@@ -1,6 +1,8 @@
 package com.sm.main;
 
 import com.sm.ench.EnchEventHandler;
+import com.sm.ench.EnchObjHandler;
+import com.sm.ench.epu.EnchPU;
 import com.sm.ench.Index;
 import com.sm.items.EItemHandler;
 
@@ -10,7 +12,8 @@ public class Instances {
 	private static EnchEventHandler ehinst;
 	private static Index ininst;
 	private static EItemHandler eihinst;
-	
+	private static EnchObjHandler eohinst;
+	private static EnchPU epuinst;
 	
 	public Instances(){
 		instance=this;
@@ -31,6 +34,14 @@ public class Instances {
 	
 	public static void setEIHandler(EItemHandler eih){
 		eihinst=eih;
+	}
+	
+	public static void setEOHandler(EnchObjHandler eoh){
+		eohinst=eoh;
+	}
+	
+	public static void setEnchPU(EnchPU epu){
+		epuinst=epu;
 	}
 	
 	
@@ -65,5 +76,13 @@ public class Instances {
 	
 	public static EItemHandler getEIHandler(){
 		return eihinst;
+	}
+	
+	public static EnchObjHandler getEOHandler(){
+		return eohinst;
+	}
+	
+	public static EnchPU getEnchPU(){
+		return epuinst;
 	}
 }
